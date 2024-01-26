@@ -25,7 +25,7 @@ import java.util.logging.SimpleFormatter;
 
 public class AddActivity extends AppCompatActivity {
 
-    EditText reportTitle, reportLat, reportLng, reportDate, reportTime;
+    EditText reportTitle, reportName, reportLat, reportLng, reportDate, reportTime;
     ImageButton reportLocation;
     Calendar calendar;
 

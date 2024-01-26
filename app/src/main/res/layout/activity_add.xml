@@ -7,17 +7,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AddActivity"
     android:layout_marginTop="30dp"
-    android:layout_marginLeft="30dp"
-    android:layout_marginRight="30dp">
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/botton_background"
         android:elevation="2dp"
@@ -48,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Report Hazard"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -59,7 +57,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:hint="Title"
+                android:hint="Short Title"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/reportName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Your Name"
                 android:inputType="text"
                 android:textAlignment="center"
                 android:textColor="#000000"
@@ -70,10 +80,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="16dp"
+                android:layout_gravity="center">
+
                 <EditText
                     android:id="@+id/reportLat"
-                    android:layout_width="130dp"
+                    android:layout_width="135dp"
                     android:layout_height="wrap_content"
                     android:hint="Latitude"
                     android:inputType="numberDecimal"
@@ -82,7 +94,7 @@
                     android:textSize="20sp" />
                 <EditText
                     android:id="@+id/reportLng"
-                    android:layout_width="130dp"
+                    android:layout_width="135dp"
                     android:layout_height="wrap_content"
                     android:hint="Longitude"
                     android:inputType="numberDecimal"
@@ -112,23 +124,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/accident"
-                    android:layout_width="100dp"
+                    android:layout_width="106dp"
                     android:layout_height="30dp"
                     android:autoSizeTextType="uniform"
                     android:text="Terrain" />
                 <RadioButton
                     android:id="@+id/weather"
-                    android:layout_width="100dp"
+                    android:layout_width="106dp"
                     android:layout_height="30dp"
                     android:autoSizeTextType="uniform"
                     android:text="Weather" />
                 <RadioButton
                     android:id="@+id/terrain"
-                    android:layout_width="100dp"
+                    android:layout_width="106dp"
                     android:layout_height="30dp"
                     android:autoSizeTextType="uniform"
                     android:text="Accident" />
@@ -139,36 +152,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="16dp"
+                android:layout_gravity="center">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/add_terrain" />
 
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/add_terrain" />
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/add_weather" />
 
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/add_weather" />
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/add_accident" />
-                </LinearLayout>
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/add_accident" />
 
             </LinearLayout>
 
@@ -178,6 +187,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Choose a Date"
+                android:textSize="20sp"
                 android:inputType="date"
                 android:textAlignment="center"
                 android:layout_marginBottom="16dp"
@@ -192,6 +202,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Choose a Time"
+                android:textSize="20sp"
                 android:inputType="time"
                 android:textAlignment="center"
                 android:layout_marginBottom="16dp"
@@ -203,5 +214,21 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Submit Report"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+
 
 </RelativeLayout>
