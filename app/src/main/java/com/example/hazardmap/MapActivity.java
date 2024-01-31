@@ -41,13 +41,14 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     private GoogleMap mMap;
     private ActivityMapBinding binding;
-    MarkerOptions marker;
     LatLng centerlocation;
     Vector<MarkerOptions> markerOptions;
-    private String URL ="http://10.20.130.119/ict602/maklumat/all.php";
+    //MarkerOptions marker;
+    private String URL ="http://10.20.130.119/ict602/hazard/all.php";
     RequestQueue requestQueue;
     Gson gson;
-    Maklumat[] maklumats;
+    //Maklumat[] maklumats;
+    Report[] reports;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,7 +138,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             centerlocation = new LatLng(latitude, longitude);
         }
         else {
-            centerlocation = new LatLng(4.7620, 100.9376);
+            //set default location
+            centerlocation = new LatLng(6.4472, 100.2797);
         }
     }
 
@@ -150,30 +152,54 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     public Response.Listener<String> onSuccess = new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
-            maklumats = gson.fromJson(response, Maklumat[].class);
+            reports = gson.fromJson(response, Report[].class);
 
-            Log.d("Maklumat", "Number of Maklumat Data Point : " + maklumats.length);
+            Log.d("Maklumat", "Number of Maklumat Data Point : " + reports.length);
 
-            if (maklumats.length <1) {
+            if (reports.length <1) {
                 Toast.makeText(getApplicationContext(),"Problem retrieving JSON data", Toast.LENGTH_LONG).show();
                 return;
             }
 
-            for(Maklumat info: maklumats) {
+            for(Report info: reports) {
                 double lat = Double.parseDouble(info.lat);
                 double lng = Double.parseDouble(info.lng);
-                String title = info.name;
-                String snippet = info.description;
+
+                String title = info.title;
+                String reporter = info.reporter;
+                String type = info.type;
+
+                String hour = info.hour;
+                String minute = info.minute;
+                String tod = info.tod;
+
+                String day = info.day;
+                String month = info.month;
+                String year = info.year;
+
+                float hue = 0;
+
+                if (type.equals("terrain")) {
+                    hue = BitmapDescriptorFactory.HUE_ORANGE;
+                } else if (type.equals("weather")) {
+                    hue = BitmapDescriptorFactory.HUE_BLUE;
+                } else if (type.equals("accident")) {
+                    hue = BitmapDescriptorFactory.HUE_YELLOW;
+                }
 
                 MarkerOptions marker = new MarkerOptions()
-                        //coordinate
+                        //position coordinate
                         .position(new LatLng(lat,lng))
-                        //title
+                        //short title
                         .title(title)
-                        //description
-                        .snippet(snippet)
-                        //market color
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
+                        //snippet description
+                        .snippet("By " + reporter)
+                        //date
+                        .snippet(day + "/" + month + "/" + year)
+                        //time
+                        .snippet(hour + " : " + minute + " " + tod)
+                        //marker color
+                        .icon(BitmapDescriptorFactory.defaultMarker(hue));
 
                 mMap.addMarker(marker);
             }
