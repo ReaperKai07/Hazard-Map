@@ -43,11 +43,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private ActivityMapBinding binding;
     LatLng centerlocation;
     Vector<MarkerOptions> markerOptions;
-    //MarkerOptions marker;
-    private String URL ="http://10.20.130.119/ict602/hazard/all.php";
+    private String URL ="http://hazardmap.infinityfreeapp.com/all.php";
+    //http://10.20.130.119/ict602/hazard/all.php
     RequestQueue requestQueue;
     Gson gson;
-    //Maklumat[] maklumats;
     Report[] reports;
 
     @Override
@@ -114,11 +113,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 Log.d("Location","Permission Granted");
             }
         } else {
-            // Permission to access the location is missing. Show rationale and request permission
-
             Log.d("Location","Permission Denied");
             ActivityCompat.requestPermissions(this,perms ,200);
-
         }
     }
 
@@ -154,7 +150,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         public void onResponse(String response) {
             reports = gson.fromJson(response, Report[].class);
 
-            Log.d("Maklumat", "Number of Maklumat Data Point : " + reports.length);
+            Log.d("Report", "Number of Maklumat Data Point : " + reports.length);
 
             if (reports.length <1) {
                 Toast.makeText(getApplicationContext(),"Problem retrieving JSON data", Toast.LENGTH_LONG).show();
@@ -188,17 +184,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 }
 
                 MarkerOptions marker = new MarkerOptions()
-                        //position coordinate
                         .position(new LatLng(lat,lng))
-                        //short title
                         .title(title)
-                        //snippet description
-                        .snippet("By " + reporter)
-                        //date
-                        .snippet(day + "/" + month + "/" + year)
-                        //time
-                        .snippet(hour + " : " + minute + " " + tod)
-                        //marker color
+                        .snippet(day + "/" + month + "/" + year + " | " + hour + " : " + minute + " " + tod + " | By " + reporter)
                         .icon(BitmapDescriptorFactory.defaultMarker(hue));
 
                 mMap.addMarker(marker);

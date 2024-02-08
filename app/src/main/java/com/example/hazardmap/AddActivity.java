@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -23,10 +25,11 @@ import java.util.Locale;
 import java.util.SimpleTimeZone;
 import java.util.logging.SimpleFormatter;
 
-public class AddActivity extends AppCompatActivity {
+public class AddActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText reportTitle, reportName, reportLat, reportLng, reportDate, reportTime;
     ImageButton reportLocation;
+    Button formButton;
     Calendar calendar;
 
     @Override
@@ -34,8 +37,13 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
+        setTitle("Report Hazard Form");
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setSelectedItemId(R.id.bottom_add);
+
+        formButton = (Button) findViewById(R.id.formButton);
+        formButton.setOnClickListener(this);
 
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -112,5 +120,13 @@ public class AddActivity extends AppCompatActivity {
                 new TimePickerDialog(AddActivity.this, time, calendar.get(calendar.HOUR_OF_DAY), calendar.get(calendar.MINUTE), true).show();
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        //form link
+        String linkId = "http://hazardmap.infinityfreeapp.com/";
+        Intent linkIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkId));
+        startActivity(linkIntent);
     }
 }

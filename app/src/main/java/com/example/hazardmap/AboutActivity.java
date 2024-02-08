@@ -21,6 +21,8 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
+        setTitle("About Us");
+
         toGithub = (Button) findViewById(R.id.toGithub);
         toGithub.setOnClickListener(this);
 

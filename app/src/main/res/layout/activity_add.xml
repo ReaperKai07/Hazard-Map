@@ -5,10 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".AddActivity"
-    android:layout_marginTop="30dp"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp">
+    tools:context=".AddActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
@@ -17,6 +14,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/botton_background"
         android:elevation="2dp"
         app:itemIconSize="30dp"
@@ -29,59 +28,63 @@
         android:id="@+id/cardStep1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="20dp"
-        app:cardElevation="20dp" >
+        app:cardElevation="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="10dp">
-
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+            <!--
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
                 android:text="Report Hazard"
-                android:textSize="20sp"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginBottom="30dp"/>
+                android:textSize="20sp"
+                android:textStyle="bold" /> -->
 
             <EditText
                 android:id="@+id/reportTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
                 android:hint="Short Title"
                 android:inputType="text"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="20sp"
-                android:layout_marginBottom="16dp" />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/reportName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
                 android:hint="Your Name"
                 android:inputType="text"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="20sp"
-                android:layout_marginBottom="16dp" />
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
+                android:layout_gravity="center"
                 android:layout_marginBottom="16dp"
-                android:layout_gravity="center">
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/reportLat"
@@ -92,6 +95,7 @@
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="20sp" />
+
                 <EditText
                     android:id="@+id/reportLng"
                     android:layout_width="135dp"
@@ -106,18 +110,18 @@
                     android:id="@+id/addLocation"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    app:srcCompat="@drawable/add_location"
-                    android:backgroundTint="@color/white"/>
+                    android:backgroundTint="@color/white"
+                    app:srcCompat="@drawable/add_location" />
 
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="Hazard Type :"
-                android:textSize="20sp"
                 android:textAlignment="center"
-                android:layout_marginBottom="10dp"/>
+                android:textSize="20sp" />
 
             <RadioGroup
                 android:id="@+id/goldType"
@@ -133,12 +137,14 @@
                     android:layout_height="30dp"
                     android:autoSizeTextType="uniform"
                     android:text="Terrain" />
+
                 <RadioButton
                     android:id="@+id/weather"
                     android:layout_width="106dp"
                     android:layout_height="30dp"
                     android:autoSizeTextType="uniform"
                     android:text="Weather" />
+
                 <RadioButton
                     android:id="@+id/terrain"
                     android:layout_width="106dp"
@@ -151,9 +157,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_gravity="center"
                 android:layout_marginBottom="16dp"
-                android:layout_gravity="center">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="70dp"
@@ -185,31 +191,31 @@
                 android:id="@+id/reportDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Choose a Date"
-                android:textSize="20sp"
-                android:inputType="date"
-                android:textAlignment="center"
                 android:layout_marginBottom="16dp"
                 android:clickable="false"
                 android:cursorVisible="false"
+                android:ems="10"
                 android:focusable="false"
-                android:focusableInTouchMode="false" />
+                android:focusableInTouchMode="false"
+                android:hint="Choose a Date"
+                android:inputType="date"
+                android:textAlignment="center"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/reportTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Choose a Time"
-                android:textSize="20sp"
-                android:inputType="time"
-                android:textAlignment="center"
                 android:layout_marginBottom="16dp"
                 android:clickable="false"
                 android:cursorVisible="false"
+                android:ems="10"
                 android:focusable="false"
-                android:focusableInTouchMode="false"/>
+                android:focusableInTouchMode="false"
+                android:hint="Choose a Time"
+                android:inputType="time"
+                android:textAlignment="center"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -219,14 +225,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp">
+        android:layout_marginBottom="120dp">
 
         <Button
+            android:id="@+id/formButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="Submit Report"
-            android:textAlignment="center"/>
+            android:text="Go to Report Form"
+            android:textAlignment="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
 
     </LinearLayout>
 
