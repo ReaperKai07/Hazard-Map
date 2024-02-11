@@ -1,4 +1,5 @@
-Setup Guide
+**Setup Guide**
+**database.zip & htdocs.zip**
 
 1. Copy the htdocs files to you xampp htdocs location
 2. Create myphpadmin database
